@@ -1,5 +1,5 @@
 def bot(message):
-    answer = "I'm not sure how to respond to that."
+    answer = "Hello dear user, still, I'm not sure how to respond to this question."
     return answer
 
 
@@ -11,3 +11,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# AI Engineering Terminalogy and concepts done
