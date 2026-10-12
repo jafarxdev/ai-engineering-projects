@@ -1,9 +1,16 @@
+import dotenv
+import os
+
+dotenv.load_dotenv()
+
+os.getenv('GROQ_API_KEY')
+
 def bot(message):
-    answer = "Hello dear user, still, I'm not sure how to respond to this question."
+    answer = "bot: hello: how can I help you?"
     return answer
 
 def main():
-    user_input = input("Ask me anything: ")
+    user_input = input("Ask something: ")
     bot_response = bot(user_input)
     print(bot_response)
 
