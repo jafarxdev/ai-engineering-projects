@@ -14,23 +14,30 @@ llm = OpenAI(
     base_url="https://api.groq.com/openai/v1",
 )
 
+messages = []
+
 
 def bot(message):
+    messages.append({'role': 'user', 'content': message})
+
     response = llm.chat.completions.create(
         model="openai/gpt-oss-120b",
-        messages=[
-            {"role": "user", "content": message}
-        ],
+        messages=messages,
         temperature=0.7,
-        max_tokens=100,
+        max_tokens=220,
     )
 
-    return response.choices[0].message.content
+
+    response_text = response.choices[0].message.content
+    messages.append({'role': 'assistant', 'content': response_text})
+
+    return response_text
+
 
 def chat():
     while True:
         try:
-            user_input = input('Ask Something (type "exit", "quit" or "q" to terminate): ').strip()
+            user_input = input('Ask Something: ').strip()
 
             if user_input.lower() in {"exit", "quit", "q"}:
                 print("Goodbye!")
@@ -46,11 +53,11 @@ def chat():
             break
 
 
-
 def main():
     chat()
     print("Groq AI Chatbot")
     print("Type 'exit' or 'quit' to stop.\n")
+    # print(messages)
 
 
 if __name__ == "__main__":
