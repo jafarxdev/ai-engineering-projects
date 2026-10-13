@@ -27,16 +27,12 @@ def bot(message):
 
     return response.choices[0].message.content
 
-
-def main():
-    print("Groq AI Chatbot")
-    print("Type 'exit' or 'quit' to stop.\n")
-
+def chat():
     while True:
         try:
-            user_input = input("Ask Something: ").strip()
+            user_input = input('Ask Something (type "exit", "quit" or "q" to terminate): ').strip()
 
-            if user_input.lower() in {"exit", "quit"}:
+            if user_input.lower() in {"exit", "quit", "q"}:
                 print("Goodbye!")
                 break
 
@@ -48,6 +44,13 @@ def main():
         except (KeyboardInterrupt, EOFError):
             print("\nGoodbye!")
             break
+
+
+
+def main():
+    chat()
+    print("Groq AI Chatbot")
+    print("Type 'exit' or 'quit' to stop.\n")
 
 
 if __name__ == "__main__":
